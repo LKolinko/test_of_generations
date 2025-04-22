@@ -16,7 +16,10 @@ int main(int argc, char* argv[]) {
         std::vector<int64_t> a(n);
 
         for (auto &u : a) {
-            u = rnd.next(0, MAX_E);
+            u = rnd.next(-MAX_E, MAX_E);
+            while (!u) {
+                u = rnd.next(-MAX_E, MAX_E);
+            }
         }
 
         std::cout << n << ' ' << q << std::endl;
@@ -61,7 +64,7 @@ int main(int argc, char* argv[]) {
                 std::swap(l, r);
             }
             
-            std::cout << l << ' ' << r << ' ' << pref_sum[r] - pref_sum[l - 1] << std::endl;
+            std::cout << l << ' ' << r << ' ' << abs(pref_sum[r] - pref_sum[l - 1]) << std::endl;
         }
 
     }   
